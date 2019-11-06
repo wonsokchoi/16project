@@ -1,0 +1,6 @@
+CREATE TABLE Laundry(seat_number int(255),
+		reserve varchar(255),
+		time int(255),
+		condition varchar(255),
+		Name varchar(255),
+		PRIMARY KEY(Name));
