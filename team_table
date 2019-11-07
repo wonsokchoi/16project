@@ -1,6 +1,2 @@
-CREATE TABLE Laundry(seat_number int(255),
-		reserve varchar(255),
-		time int(255),
-		condition varchar(255),
-		Name varchar(255),
-		PRIMARY KEY(Name));
+USE 데이터베이스 이름
+CREATE TABLE Laundry(room_id INT PRIMARY KEY, seat_number INT, is_reserve NVARCHAR(255), time DATE, condition NVARCHAR(255));
