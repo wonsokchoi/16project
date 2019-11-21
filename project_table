@@ -1,0 +1,40 @@
+import mysql.connector
+import mysql.connector
+from mysql.connector import errorcode
+
+# Environments
+cnx = None
+try :
+    cnx = mysql.connector.connect(user='ssu1', password='tomato2480*',
+                                  host='localhost', database='ssudb')
+except Exception as e :
+    print("Connect Failed :"+str(e))
+    
+DB_NAME = 'ssudb'
+TABLES_NAME = 'ssu_table'
+TABLE_SCHEMA = "CREATE TABLE "+TABLES_NAME+ "("+\
+    "  seat_number      int              NOT NULL,"+\
+    "  cond                nvarchar(14) NOT NULL,"+\
+    "  name               nvarchar(16),"+\
+    "  reserve                nvarchar(14) NOT NULL,"+\
+    "  remainedtime     int              NOT NULL,"+\
+    "  PRIMARY KEY (name));"
+# Make cursor for execute queries.
+print("Creating table {}: ".format(TABLES_NAME))
+
+cursor = cnx.cursor()
+try:
+    query = TABLE_SCHEMA
+    cursor.execute(query)
+# If error occurs.
+except mysql.connector.Error as err:
+    if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+        print("already exists.")
+    else:
+        print(err.msg)
+else:
+    print("Execute OK")
+
+cursor.close()
+cnx.close()
+
