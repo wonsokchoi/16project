@@ -1,0 +1,20 @@
+from opensource_data_receive import *
+sql = SQL()
+sql.test()
+data = sql.select_where("data_table","seat_number=0 AND name='Soongsil Univ'")
+print(data)
+if(data[2] > 0 and data[2] <= 45):
+    sql.update("ssu_table", str(data[2]),"'작동중'","0","'Soongsil Univ'")
+
+
+elif (data[2]==0):
+    sql.update("ssu_table","0","'사용가능'","0","'Soongsil Univ'")
+
+
+elif(data[2]==99):
+    sql.update("ssu_table","0","'사용가능'","0","'Soongsil Univ'")
+
+elif(data[2]==98):
+  sql.update("ssu_table", "-1", "'사용불가능'","0","'Soongsil Univ'")
+
+print(sql.select_where("ssu_table", "seat_number=0 AND name='Soongsil Univ'"))
