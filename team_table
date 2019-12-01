@@ -1,2 +1,0 @@
-USE 데이터베이스 이름
-CREATE TABLE Laundry(room_id INT PRIMARY KEY, seat_number INT, is_reserve NVARCHAR(255), time DATE, condition NVARCHAR(255));
